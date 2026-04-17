@@ -1,0 +1,27 @@
+# Core ML / NLP
+torch==2.2.2
+transformers==4.40.1
+datasets==2.19.1
+tokenizers==0.19.1
+accelerate==0.29.3
+
+# Fairness toolkits
+fairlearn==0.10.0
+aif360==0.6.1
+
+# Classical ML & metrics
+scikit-learn==1.4.2
+scipy==1.13.0
+imbalanced-learn==0.12.2
+
+# Data
+pandas==2.2.2
+numpy==1.26.4
+
+# Visualisation
+matplotlib==3.8.4
+seaborn==0.13.2
+
+# Jupyter
+ipykernel==6.29.4
+ipywidgets==8.1.2

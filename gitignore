@@ -1,0 +1,29 @@
+# Dataset files
+*.csv
+data/
+
+# Model checkpoints
+*.pt
+*.bin
+*.safetensors
+saved_model/
+checkpoints/
+best_model/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
