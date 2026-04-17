@@ -1,5 +1,8 @@
 # Core ML / NLP
-torch==2.2.2
+torch==2.5.1
+torchvision==0.20.1
+torchaudio==2.5.1
+
 transformers==4.40.1
 datasets==2.19.1
 tokenizers==0.19.1
