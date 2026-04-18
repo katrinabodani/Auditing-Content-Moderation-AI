@@ -43,7 +43,7 @@ python -m ipykernel install --user --name responsible-ai --display-name "Python 
 This assignment uses the **Jigsaw Unintended Bias in Toxicity Classification** dataset.
 
 1. Create a free account at [kaggle.com](https://kaggle.com)
-2. Accept the competition at: https://kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification
+2. Accept the competition at: https://www.kaggle.com/competitions/jigsaw-multilingual-toxic-comment-classification/data
 3. Download only these two files from the Data tab:
    - `jigsaw-unintended-bias-train.csv`
    - `validation.csv`
