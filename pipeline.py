@@ -23,12 +23,12 @@ from sklearn.base import BaseEstimator, ClassifierMixin
 
 
 # ===========================================================================
-# Layer 1 — Regex Blocklist
+# Layer 1: Regex Blocklist
 # ===========================================================================
 
 BLOCKLIST: dict[str, list[re.Pattern]] = {
 
-    # ── Category 1: Direct threats of violence (5 patterns) ─────────────────
+    # Category 1: Direct threats of violence (5 patterns) 
     "direct_threat": [
         # "I will/gonna/going to [kill|murder|shoot|stab|hurt] you"
         re.compile(
@@ -50,14 +50,14 @@ BLOCKLIST: dict[str, list[re.Pattern]] = {
             r"\bi(?:'ll|\s+will|\s+am\s+going\s+to|\s+gonna)\s+find\s+(?:where\s+you\s+live|your\s+address)\b",
             re.IGNORECASE
         ),
-        # "watch your back / you better watch out — threat framing"
+        # "watch your back / you better watch out, threat framing"
         re.compile(
             r"\b(?:watch\s+your\s+back|you(?:'d)?\s+better\s+(?:watch\s+out|run|be\s+scared)|you\s+won't\s+survive)\b",
             re.IGNORECASE
         ),
     ],
 
-    # ── Category 2: Calls for self-harm or suicide (4 patterns) ─────────────
+    # Category 2: Calls for self-harm or suicide (4 patterns) 
     "self_harm_directed": [
         # "you should kill yourself"
         re.compile(
@@ -81,7 +81,7 @@ BLOCKLIST: dict[str, list[re.Pattern]] = {
         ),
     ],
 
-    # ── Category 3: Doxxing and stalking threats (4 patterns) ───────────────
+    # Category 3: Doxxing and stalking threats (4 patterns) 
     "doxxing_stalking": [
         # "I know where you live"
         re.compile(
@@ -105,7 +105,7 @@ BLOCKLIST: dict[str, list[re.Pattern]] = {
         ),
     ],
 
-    # ── Category 4: Severe dehumanization (4 patterns) ──────────────────────
+    # Category 4: Severe dehumanization (4 patterns) 
     "dehumanization": [
         # "[group] are not human / are subhuman"
         re.compile(
@@ -129,7 +129,7 @@ BLOCKLIST: dict[str, list[re.Pattern]] = {
         ),
     ],
 
-    # ── Category 5: Coordinated harassment signals (3 patterns) ─────────────
+    # Category 5: Coordinated harassment signals (3 patterns) 
     "coordinated_harassment": [
         # "everyone report [username/this/them]"
         re.compile(
@@ -156,7 +156,7 @@ def input_filter(text: str) -> dict | None:
 
     Returns a block decision dict if any pattern matches, else None.
     Iterates over all categories so the triggering category is always
-    identifiable in the returned decision — making the filter auditable.
+    identifiable in the returned decision, making the filter auditable.
 
     Parameters
     ----------
@@ -183,7 +183,7 @@ def input_filter(text: str) -> dict | None:
 
 
 # ===========================================================================
-# Layer 2 + 3 — Calibrated Model & Human Review Queue
+# Layer 2 + 3: Calibrated Model & Human Review Queue
 # ===========================================================================
 
 class _DistilBertWrapper(BaseEstimator, ClassifierMixin):
