@@ -1,5 +1,5 @@
 # Responsible & Explainable AI -- Assignment 2
-**FAST-NUCES | Auditing Content Moderation AI for Bias, Adversarial Robustness & Safety**
+**Auditing Content Moderation AI for Bias, Adversarial Robustness & Safety**
 
 ---
 
