@@ -4,9 +4,9 @@ pipeline.py
 Production-grade three-layer content moderation guardrail pipeline.
 
 Layers:
-    1. Input Filter  — fast regex pre-filter for obvious violations (5 categories, 20+ patterns)
-    2. Calibrated Model — DistilBERT with isotonic probability calibration
-    3. Human Review Queue — uncertain predictions (confidence 0.4–0.6)
+    1. Input Filter: fast regex pre-filter for obvious violations (5 categories, 20+ patterns)
+    2. Calibrated Model: DistilBERT with isotonic probability calibration
+    3. Human Review Queue: uncertain predictions (confidence 0.4–0.6)
 
 Usage:
     pipeline = ModerationPipeline(model_path="./checkpoints/best_model")
@@ -207,9 +207,9 @@ class ModerationPipeline:
     """
     Three-layer content moderation pipeline.
 
-    Layer 1 — regex input filter (instant, no model call)
-    Layer 2 — calibrated DistilBERT (confident decisions)
-    Layer 3 — human review queue (uncertain decisions)
+    Layer 1 : regex input filter (instant, no model call)
+    Layer 2 : calibrated DistilBERT (confident decisions)
+    Layer 3 : human review queue (uncertain decisions)
 
     Parameters
     ----------
@@ -283,12 +283,12 @@ class ModerationPipeline:
             confidence : float (1.0 for input_filter decisions)
             category   : str (only present for input_filter decisions)
         """
-        # ── Layer 1: input filter ─────────────────────────────────────────────
+        # Layer 1: input filter 
         filter_result = input_filter(text)
         if filter_result is not None:
             return filter_result
 
-        # ── Layer 2: calibrated model ─────────────────────────────────────────
+        # Layer 2: calibrated model
         confidence = self._get_calibrated_confidence(text)
 
         if confidence >= self.BLOCK_THRESHOLD:
@@ -305,7 +305,7 @@ class ModerationPipeline:
                 "confidence": confidence
             }
 
-        # ── Layer 3: human review queue ───────────────────────────────────────
+        # Layer 3: human review queue 
         return {
             "decision":   "review",
             "layer":      "review_queue",
